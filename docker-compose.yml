@@ -1,0 +1,47 @@
+version: '3.0'
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - php
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/log:/var/log/nginx
+      - ./html:/usr/share/nginx/html
+    networks:
+      - php_web_net
+    container_name: php-web-nginx
+  php:
+    image: php:7.4-fpm
+    build: ./php7.4
+    ports:
+      - 9000:9000
+    links:
+      - mysql
+    volumes:
+      - ./php7.4/conf/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./php7.4/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf
+      - ./php7.4/php.ini:/usr/local/etc/php/php.ini
+      - ./html:/var/www/html
+    networks:
+      - php_web_net
+    container_name: php-web-php
+  mysql:
+    image: mysql:8.0
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - php_web_net
+    container_name: php-web-mysql
+networks:
+  php_web_net:

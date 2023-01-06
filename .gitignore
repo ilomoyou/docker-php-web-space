@@ -5,5 +5,16 @@
 !.vscode/extensions.json
 *.code-workspace
 
+/html/*
+!/html/index.html
+!/html/index.php
+
+/nginx/log/*
+/nginx/conf/*
+!/nginx/conf/default.conf
+
+/mysql/conf/*
+/mysql/data/*
+
 # Local History for Visual Studio Code
 .history/
