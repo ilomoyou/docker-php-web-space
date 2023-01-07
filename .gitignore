@@ -16,5 +16,8 @@
 /mysql/conf/*
 /mysql/data/*
 
+/redis/data/*
+/redis/logs/*
+
 # Local History for Visual Studio Code
 .history/
