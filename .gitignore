@@ -12,6 +12,7 @@
 /nginx/log/*
 /nginx/conf/*
 !/nginx/conf/default.conf
+!/nginx/conf/demo.conf
 
 /mysql/conf/*
 /mysql/data/*
