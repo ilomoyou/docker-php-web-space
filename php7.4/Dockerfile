@@ -31,5 +31,5 @@ RUN apt-get update \
         mcrypt \
         redis-5.3.7 \
         amqp-1.11.0 \
-        xdebug-3.1.6 \
+        xdebug-2.9.8 \
         @composer
