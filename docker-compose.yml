@@ -6,6 +6,8 @@ services:
       - 80:80
     depends_on:
       - php
+    environment:
+      - TZ=Asia/Shanghai
     volumes:
       - ./nginx/conf:/etc/nginx/conf.d
       - ./nginx/conf/default.conf:/etc/nginx/conf.d/default.conf
@@ -23,6 +25,8 @@ services:
     links:
       - mysql
       - redis
+    environment:
+      - TZ=Asia/Shanghai
     volumes:
       - ./php7.4/conf/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./php7.4/conf/www.conf:/usr/local/etc/php-fpm.d/www.conf
@@ -36,6 +40,7 @@ services:
     ports:
       - 3307:3306
     environment:
+      - TZ=Asia/Shanghai
       - MYSQL_ROOT_PASSWORD=root
     volumes:
       - ./mysql/data:/var/lib/mysql
