@@ -16,6 +16,7 @@ services:
       - ./html:/usr/share/nginx/html
     networks:
       - php_web_net
+    hostname: nginx
     container_name: php-web-nginx
   php:
     image: php:7.4-fpm
@@ -34,6 +35,7 @@ services:
       - ./html:/var/www/html
     networks:
       - php_web_net
+    hostname: php
     container_name: php-web-php
   mysql:
     image: mysql:8.0
@@ -48,6 +50,7 @@ services:
       - ./mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - php_web_net
+    hostname: mysql
     container_name: php-web-mysql
   redis:
     image: redis:6.2.6
