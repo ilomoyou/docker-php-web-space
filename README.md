@@ -9,7 +9,7 @@
 ## 目录结构
 ```tex
 |-- docker-compose.yml #docker-compose的配置文件，允许我们同时部署多个docker容器
-|-- html #项目存放目录
+|-- www #项目存放目录
 |   |-- index.html #html默认主页 输出：hello world
 |   `-- index.php #php默认主页 输出：phpinfo()
 |-- mysql #MySQL服务目录
@@ -112,7 +112,7 @@ php-web-redis   docker-entrypoint.sh redis ...   Up      0.0.0.0:6379->6379/tcp
 
 > 容器服务版本
 
-- Nginx ***latest***
+- Nginx ***1.24.0***
 - PHP ***v7.4***
 - MySQL ***v8.0***
 - Redis ***v6.2.6***
@@ -130,7 +130,7 @@ php-web-redis   docker-entrypoint.sh redis ...   Up      0.0.0.0:6379->6379/tcp
 docker-compose restart nginx
 
 # 进入nginx容器
-docker exec -it php-web-nginx bash
+docker exec -it nginx bash
 # 检测nginx配置是否正确
 nginx -t
 # 重新加载nginx配置文件
@@ -139,7 +139,7 @@ nginx -s reload
 
 > MySQL 容器服务说明
 
-- mysql 宿主机端口映射为 **3307**，登录账号密码为 **root**
+- mysql 宿主机端口映射为 **3306**，登录账号密码为 **root**
 - `mysql/my.cnf` 为 mysql 默认配置文件
 
 - `mysql/conf` 为 mysql 自定义配置文件目录

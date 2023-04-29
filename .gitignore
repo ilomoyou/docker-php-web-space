@@ -5,9 +5,9 @@
 !.vscode/extensions.json
 *.code-workspace
 
-/html/*
-!/html/index.html
-!/html/index.php
+/www/*
+!/www/index.html
+!/www/index.php
 
 /nginx/log/*
 /nginx/conf/*
@@ -19,6 +19,9 @@
 
 /redis/data/*
 /redis/logs/*
+
+.env
+docker-compose.yml
 
 # Local History for Visual Studio Code
 .history/
