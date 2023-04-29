@@ -75,6 +75,26 @@ services:
       - php_web_net
     hostname: redis
     container_name: php_web_redis
+  hyperf:
+    image: hyperf/hyperf:${HYPERF_VERSION}-alpine-v3.15-swoole
+    volumes:
+      - ${PROJECT_DIR}:/data/project
+    ports:
+      - "${HYPERF_HOST_PORT}:9501"
+    links:
+      - mysql
+      - redis
+    privileged: true
+    user: root
+    stdin_open: true
+    tty: true
+    entrypoint: ["/bin/sh"]
+    environment:
+      TZ: "${TZ}"
+    networks:
+      - php_web_net
+    hostname: hyperf
+    container_name: php_web_hyperf
 networks:
   php_web_net:
     driver: bridge
