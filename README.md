@@ -8,10 +8,9 @@
 
 ## 目录结构
 ```tex
-|-- docker-compose.yml #docker-compose的配置文件，允许我们同时部署多个docker容器
+|-- docker-compose.example.yml #Docker 服务配置示例文件
+|-- .evn.example #Docker 环境配置示例文件
 |-- www #项目存放目录
-|   |-- index.html #html默认主页 输出：hello world
-|   `-- index.php #php默认主页 输出：phpinfo()
 |-- mysql #MySQL服务目录
 |   |-- conf #msyql配置文件目录
 |   |-- data #mysql数据存储目录
@@ -21,30 +20,24 @@
 |   |   |-- default.conf #nginx默认配置文件
 |   |   `-- demo.conf #项目配置demo（作为参考使用）
 |   |-- log #nginx日志目录
-|   |   |-- access.log #nginx访问日志
-|   |   `-- error.log #nginx错误日志
 |   `-- nginx.conf #nginx主配置文件
 |-- php7.4 #PHP服务目录
-|   |-- Dockerfile #php镜像的构建文件
 |   |-- conf #PHP配置文件目录
 |   |   |-- php-fpm.conf #php-fpm进程服务的配置文件
 |   |   `-- www.conf #php-fpm进程服务的扩展配置文件
 |   `-- php.ini #php运行核心配置文件
 `-- redis #Redis服务目录
-    |-- Dockerfile #redis镜像的构建文件
     |-- conf
     |   `-- redis.conf #redis配置文件
     |-- data #redis数据存储目录
-    |   `-- dump.rdb
     `-- logs #redis日志目录
-        `-- redis.log
 
 ```
 
 
 ## 安装教程
 
-### docker 环境安装
+### Windows docker 环境安装
 
 > 下载地址
 
@@ -68,9 +61,9 @@ docker --version
 docker-compose --version
 ```
 
-### docker-compose 创建容器
+### 快速使用
 
-> 克隆项目
+> clone 项目
 
 ```shell
 # GitHub
@@ -83,8 +76,10 @@ git clone https://gitee.com/moon_lsj/docker-php-web-space.git
 > 创建容器
 
 ```shell
-# 切换到项目目录
 cd docker-php-web-space
+
+cp .env.example .env                               # 复制环境变量文件
+cp docker-compose.example.yml docker-compose.yml   # 复制 docker-compose 配置文件
 
 # 创建容器
 # 拉取PHP扩展因为国内防火墙的缘故可能会失败，可以翻墙或者多重试几次
@@ -127,10 +122,10 @@ php-web-redis   docker-entrypoint.sh redis ...   Up      0.0.0.0:6379->6379/tcp
 
 ```shell
 # 重启nginx容器
-docker-compose restart nginx
+docker-compose restart php-web-nginx
 
 # 进入nginx容器
-docker exec -it nginx bash
+docker exec -it php-web-nginx bash
 # 检测nginx配置是否正确
 nginx -t
 # 重新加载nginx配置文件
@@ -141,7 +136,6 @@ nginx -s reload
 
 - mysql 宿主机端口映射为 **3306**，登录账号密码为 **root**
 - `mysql/my.cnf` 为 mysql 默认配置文件
-
 - `mysql/conf` 为 mysql 自定义配置文件目录
 - `mysql/data` 为 mysql 数据存储目录
 
