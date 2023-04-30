@@ -8,29 +8,28 @@
 
 ## 目录结构
 ```tex
-|-- docker-compose.example.yml #Docker 服务配置示例文件
-|-- .evn.example #Docker 环境配置示例文件
-|-- www #项目存放目录
-|-- mysql #MySQL服务目录
-|   |-- conf #msyql配置文件目录
-|   |-- data #mysql数据存储目录
-|   `-- my.cnf #mysql默认配置文件
-|-- nginx #Nginx服务目录
-|   |-- conf #nginx配置文件目录
-|   |   |-- default.conf #nginx默认配置文件
-|   |   `-- demo.conf #项目配置demo（作为参考使用）
-|   |-- log #nginx日志目录
-|   `-- nginx.conf #nginx主配置文件
-|-- php7.4 #PHP服务目录
-|   |-- conf #PHP配置文件目录
-|   |   |-- php-fpm.conf #php-fpm进程服务的配置文件
-|   |   `-- www.conf #php-fpm进程服务的扩展配置文件
-|   `-- php.ini #php运行核心配置文件
-`-- redis #Redis服务目录
-    |-- conf
-    |   `-- redis.conf #redis配置文件
-    |-- data #redis数据存储目录
-    `-- logs #redis日志目录
+|-- www                          项目存储目录
+|-- mysql                        MySQL服务
+|   |-- conf                     msyql配置文件目录
+|   |-- data                     mysql数据存储目录
+|   `-- my.cnf                   mysql默认配置文件
+|-- nginx                        Nginx服务
+|   |-- conf                     nginx配置目录
+|   |   |-- default.conf         nginx默认配置文件
+|   |   `-- demo.conf            项目配置demo（作为参考使用）
+|   |-- log                      nginx日志目录
+|   `-- nginx.conf               nginx主配置文件
+|-- php7.4                       PHP服务
+|   |-- conf                     PHP配置目录
+|   |   |-- php-fpm.conf         php-fpm进程服务的配置文件
+|   |   `-- www.conf             php-fpm进程服务的扩展配置文件
+|   `-- php.ini                  php运行核心配置文件
+|-- redis                        Redis服务
+|    |-- conf                    redis配置目录
+|    |-- data                    redis数据存储目录
+|    `-- logs                    redis日志目录
+|-- .evn.example                 Docker 环境配置示例文件
+|-- docker-compose.example.yml   Docker 服务配置示例文件
 
 ```
 
